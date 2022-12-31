@@ -7,15 +7,15 @@
  * @size:        Size of the array to sort.
  */
 
-void selection_sort(int *array, size_t size)
+int selection_sort(int *array, size_t size)
 {
 	/* a[0] to a[aLength-1] is the array to sort */
-	size_t i, j, jMin;
+	size_t i, j, jMin, temp;
 
 	if (!array || size < 2)
 	{
 		fprintf(stderr, "Array is empty or have one element");
-		return;
+		return (0);
 	}
 	/* advance the position through the entire array */
 	/*   (could do i < aLength-1 because single element is also min element) */
@@ -42,4 +42,5 @@ void selection_sort(int *array, size_t size)
 			array[jMin] = temp;
 			print_array(array, size);
 		}
-return
+		
+		return (0);
