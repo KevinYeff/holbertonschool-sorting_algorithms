@@ -14,7 +14,7 @@ void selection_sort(int *array, size_t size)
 
 	if (!array || size < 2)
 	{
-		fprintf(stderr, "Array is empty or have one element");
+		break;
 	}
 	/* advance the position through the entire array */
 	/*   (could do i < aLength-1 because single element is also min element) */
