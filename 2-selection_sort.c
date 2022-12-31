@@ -1,44 +1,44 @@
 #include "sort.h"
 
 /**
- * selection_sort - sorts an array of integers in ascending
- * order using the Selection sort algorithm.
- * @array:       Pointer to the first element of the array to sort.
- * @size:        Size of the array to sort.
+ * swap_ints - Swap two integers in an array.
+ * @a: The first integer to swap.
+ * @b: The second integer to swap.
  */
+void swap_ints(int *a, int *b)
+{
+	int tmp;
 
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
+}
+
+/**
+ * selection_sort - Sort an array of integers in ascending order
+ *                  using the selection sort algorithm.
+ * @array: An array of integers.
+ * @size: The size of the array.
+ *
+ * Description: Prints the array after each swap.
+ */
 void selection_sort(int *array, size_t size)
 {
-	/* a[0] to a[aLength-1] is the array to sort */
-	size_t i, j, jMin, temp;
+	int *min;
+	size_t i, j;
 
-	if (!array || size < 2)
-	{
-		break;
-	}
-	/* advance the position through the entire array */
-	/*   (could do i < aLength-1 because single element is also min element) */
+	if (array == NULL || size < 2)
+		return;
+
 	for (i = 0; i < size - 1; i++)
 	{
-		/* find the min element in the unsorted a[i .. aLength-1] */
-		/* assume the min is the first element */
-		jMin = i;
-		/* test against elements after i to find the smallest */
+		min = array + i;
 		for (j = i + 1; j < size; j++)
-		{
-			/* if this element is less, then it is the new minimum */
-			if (array[j] < array[jMin])
-			{
-				/* found new minimum; remember its index */
-				jMin = j;
-			}
-		}
+			min = (array[j] < *min) ? (array + j) : min;
 
-		if (jMin != i)
+		if ((array + i) != min)
 		{
-			temp = array[j];
-			array[j] = array[jMin];
-			array[jMin] = temp;
+			swap_ints(array + i, min);
 			print_array(array, size);
 		}
 	}
