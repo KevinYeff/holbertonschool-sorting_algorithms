@@ -10,12 +10,12 @@
 void selection_sort(int *array, size_t size)
 {
 	/* a[0] to a[aLength-1] is the array to sort */
-	int i, j, jMin;
+	size_t i, j, jMin;
 
 	if (!array || size < 2)
 	{
 		fprintf(stderr, "Array is empty or have one element");
-		exit;
+		return;
 	}
 	/* advance the position through the entire array */
 	/*   (could do i < aLength-1 because single element is also min element) */
@@ -37,11 +37,9 @@ void selection_sort(int *array, size_t size)
 
 		if (jMin != i)
 		{
-			swap(a[i], a[jMin]);
 			temp = array[j];
 			array[j] = array[jMin];
 			array[jMin] = temp;
 			print_array(array, size);
 		}
-	}
-}
+return
